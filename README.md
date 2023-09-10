@@ -9,6 +9,35 @@ AsyncValue を使用することで、非同期操作のロード/エラー状�
 
 また、AsyncValueを別のオブジェクトにうまく変換するためのユーティリティも公開されている。例えば、Flutter WidgetはAsyncValueをプログレスインジケータやエラー画面に変換したり、データを表示したりするのに使うことができる：
 
+## view側で使う時には３つの処理を使う
+AsyncValueを使用するには、3つの処理を行う必要があります。
+
+1. data: データが利用可能な場合に呼び出されるコールバック
+2. loading: データがロード中の場合に呼び出されるコールバック
+3. error: データが利用できない場合に呼び出されるコールバック
+
+
+```dart
+/// A provider that asynchronously exposes the current user
+final userProvider = StreamProvider<User>((_) async* {
+  // fetch the user
+});
+
+class Example extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<User> user = ref.watch(userProvider);
+
+    return user.when(
+      loading: () => CircularProgressIndicator(),// ぐるぐる回るやつ
+      error: (error, stack) => Text('Oops, something unexpected happened'),// エラーメッセジーを表示する
+      data: (user) => Text('Hello ${user.name}'),// データを表示する
+    );
+  }
+}
+```
+
+
 Firestoreからデータを取得するプロバイダーを使った例
 **使用例**
 ```dart
