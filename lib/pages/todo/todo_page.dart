@@ -12,7 +12,7 @@ class TodoPage extends ConsumerStatefulWidget {
 
 class _TodoPageState extends ConsumerState<TodoPage> {
   // Freezedはimuutableなので、copyWithで値を変更する
-  var todos = const Todo(isDone: false).copyWith(task: '米を買う', count: 2);
+  var todos = const Todo().copyWith(task: '米を買う', count: 2);
 
   @override
   void initState() {

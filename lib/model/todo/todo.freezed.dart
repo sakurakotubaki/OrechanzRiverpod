@@ -113,7 +113,7 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
 /// @nodoc
 @JsonSerializable()
 class _$_Todo with DiagnosticableTreeMixin implements _Todo {
-  const _$_Todo({this.task = '', this.count = 0, required this.isDone});
+  const _$_Todo({this.task = '', this.count = 0, this.isDone = false});
 
   factory _$_Todo.fromJson(Map<String, dynamic> json) => _$$_TodoFromJson(json);
 
@@ -124,6 +124,7 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
   @JsonKey()
   final int count;
   @override
+  @JsonKey()
   final bool isDone;
 
   @override
@@ -170,10 +171,8 @@ class _$_Todo with DiagnosticableTreeMixin implements _Todo {
 }
 
 abstract class _Todo implements Todo {
-  const factory _Todo(
-      {final String task,
-      final int count,
-      required final bool isDone}) = _$_Todo;
+  const factory _Todo({final String task, final int count, final bool isDone}) =
+      _$_Todo;
 
   factory _Todo.fromJson(Map<String, dynamic> json) = _$_Todo.fromJson;
 
