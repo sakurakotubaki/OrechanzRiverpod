@@ -45,11 +45,12 @@ class PostView extends ConsumerWidget {
             },
           );
         },
-        error: (e, s) => Text(e.toString()),
+        error: (e, s) => const Text('エラーです'),
         loading: () => const CircularProgressIndicator(),
       ),
     );
   }
+
   // クラスで切り分けることができなかった?
   Future<void> FormDialog(BuildContext context,
       TextEditingController postController, WidgetRef ref) {
