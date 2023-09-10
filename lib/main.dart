@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:orechanz/pages/widget/slider/slider_example.dart';
+import 'package:orechanz/pages/widget/checkbox/checkbox_example.dart';
 
 void main() {
   runApp(
@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     return MaterialApp(
-      home: SliderExample(),
+      home: CheckboxExample(),
     );
   }
 }
